@@ -7,7 +7,27 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Weather App"),
+        backgroundColor: Colors.blueAccent,
+        title: const Text("Weather App"),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              "there is no weather 😔 start",
+              style: TextStyle(
+                fontSize: 26,
+              ),
+            ),
+            Text(
+              "searching now 🔍",
+              style: TextStyle(
+                fontSize: 26,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
