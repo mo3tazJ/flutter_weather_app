@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/models/weather_model.dart';
 import 'package:flutter_weather_app/pages/search_page.dart';
+import 'package:flutter_weather_app/providers/weather_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -30,7 +32,7 @@ class _HomePageState extends State<HomePage> {
               icon: const Icon(Icons.search))
         ],
       ),
-      body: weatherData == null
+      body: Provider.of<WeatherProvider>(context).weatherData == null
           ? const Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
