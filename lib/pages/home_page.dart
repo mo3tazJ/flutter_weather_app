@@ -12,12 +12,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  void updateUi() {
-    setState(() {});
-  }
-
+  WeatherModel? weatherData;
   @override
   Widget build(BuildContext context) {
+    weatherData = Provider.of<WeatherProvider>(context).weatherData;
     return Scaffold(
       appBar: AppBar(
         // backgroundColor: Colors.blueAccent,
@@ -26,13 +24,13 @@ class _HomePageState extends State<HomePage> {
           IconButton(
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return SearchPage(updateUi: updateUi);
+                  return SearchPage();
                 }));
               },
               icon: const Icon(Icons.search))
         ],
       ),
-      body: Provider.of<WeatherProvider>(context).weatherData == null
+      body: weatherData == null
           ? const Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -61,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                     flex: 3,
                   ),
                   Text(
-                    "Cairo",
+                    Provider.of<WeatherProvider>(context).cityName ?? "No City",
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
@@ -80,9 +78,9 @@ class _HomePageState extends State<HomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Image.asset("assets/images/clear.png"),
+                      Image.asset(weatherData!.getImage()),
                       Text(
-                        "32",
+                        "${weatherData!.temp.toInt()}",
                         style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.normal,
@@ -91,14 +89,14 @@ class _HomePageState extends State<HomePage> {
                       Column(
                         children: [
                           Text(
-                            "Max: 33",
+                            "Max: ${weatherData!.maxTemp.toInt()}",
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.normal,
                             ),
                           ),
                           Text(
-                            "Min: 18",
+                            "Min: ${weatherData!.minTemp.toInt()}",
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.normal,
@@ -112,7 +110,8 @@ class _HomePageState extends State<HomePage> {
                     flex: 1,
                   ),
                   Text(
-                    "Sunny",
+                    weatherData?.weatherStateName ??
+                        "", // Or: weatherData!.weatherStateName , Because the null check at the body beginning
                     style: TextStyle(
                       fontSize: 26,
                       fontWeight: FontWeight.bold,

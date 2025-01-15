@@ -22,6 +22,25 @@ class WeatherModel {
     );
   }
 
+  String getImage() {
+    if (weatherStateName == 'Sunny' || weatherStateName == 'Clear') {
+      return "assets/images/clear.png";
+    } else if (weatherStateName == 'Partly cloudy' ||
+        weatherStateName == 'Cloudy' ||
+        weatherStateName.contains("loud") ||
+        weatherStateName == 'Mist') {
+      return "assets/images/cloudy.png";
+    } else if (weatherStateName.contains("hunder")) {
+      return "assets/images/thunderstorm.png";
+    } else if (weatherStateName.contains("now")) {
+      return "assets/images/snow.png";
+    } else if (weatherStateName.contains("ain")) {
+      return "assets/images/rainy.png";
+    } else {
+      return "assets/images/clear.png";
+    }
+  }
+
   @override
   String toString() {
     return "$weatherStateName \nMax temp: $maxTemp \nMin temp: $minTemp";

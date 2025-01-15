@@ -6,8 +6,7 @@ import 'package:provider/provider.dart';
 
 class SearchPage extends StatelessWidget {
   String? cityName;
-  VoidCallback? updateUi;
-  SearchPage({this.updateUi});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +24,8 @@ class SearchPage extends StatelessWidget {
                   await service.getWeather(cityName: cityName!);
               Provider.of<WeatherProvider>(context, listen: false).weatherData =
                   weather;
+              Provider.of<WeatherProvider>(context, listen: false).cityName =
+                  cityName;
 
               Navigator.pop(context);
             },
