@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                       fontWeight: FontWeight.normal,
                     ),
                   ),
-                  Spacer(
+                  const Spacer(
                     flex: 1,
                   ),
                   Row(
@@ -106,7 +106,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                  Spacer(
+                  const Spacer(
                     flex: 1,
                   ),
                   Text(
@@ -116,7 +116,7 @@ class _HomePageState extends State<HomePage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Spacer(
+                  const Spacer(
                     flex: 6,
                   ),
                 ],
