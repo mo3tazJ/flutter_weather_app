@@ -4,6 +4,8 @@ import 'package:flutter_weather_app/services/weather_service.dart';
 
 class SearchPage extends StatelessWidget {
   String? cityName;
+  VoidCallback? updateUi;
+  SearchPage({this.updateUi});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,6 +21,9 @@ class SearchPage extends StatelessWidget {
               WeatherService service = WeatherService();
               WeatherModel weather =
                   await service.getWeather(cityName: cityName!);
+              weatherData = weather;
+              updateUi!();
+              Navigator.pop(context);
             },
             decoration: InputDecoration(
               contentPadding:
@@ -37,3 +42,5 @@ class SearchPage extends StatelessWidget {
     );
   }
 }
+
+WeatherModel? weatherData;
