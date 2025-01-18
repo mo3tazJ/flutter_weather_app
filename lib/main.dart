@@ -12,16 +12,15 @@ void main() {
       child: WeatherApp()));
 }
 
+// ignore: must_be_immutable
 class WeatherApp extends StatelessWidget {
   WeatherApp({super.key});
   WeatherModel? weather;
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: 'Weather App',
       home: HomePage(),
     );
   }
